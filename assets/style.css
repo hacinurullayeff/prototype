@@ -1,0 +1,334 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey; 
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+    background: #ff8000; 
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #b30000; 
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+
+/* COLORS */
+:root{
+    --color-orange: #ff9933;
+    --color-danger: #cc3300;
+}
+
+
+body{
+    min-height: 100vh;
+    overflow-x: hidden
+}
+
+/* HEADER */
+header{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(135deg, rgba(0,0,0,.5),rgba(0,0,0,.4)),
+                url(img/bg.jpg) no-repeat center center / cover fixed;
+}
+
+
+/* NAVBAR  */
+header>nav{
+    display: flex;
+    justify-content: space-between;
+    width: 100vw;
+    padding: 10px;
+    background-color: rgba(0,0,0,.7);
+    align-items: center;
+    position: fixed;
+    z-index: 3;
+}
+
+header>nav>img{
+    width: 190px;
+    height: 55px;
+    cursor: pointer;
+}
+
+header>nav>ul{
+    display: flex;
+    padding: 10px;
+    list-style-type: none;
+}
+
+header>nav>ul>li{
+    padding: 10px;
+}
+
+header>nav>ul>li>a{
+    text-decoration: none;
+    color: #fff;
+    font-size: 15px;
+    display: inline-block;
+    position: relative;
+    padding-bottom: 2px;
+}
+
+.underline-hover:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--color-danger);
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+  }
+  
+.underline-hover:hover:after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+
+/* WELCOME PAGE */
+
+.welcome{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.welcome>h3{
+    font-size: 25px;
+    padding: 10px;
+    color: var(--color-orange);
+    text-shadow: 1px 1px 3px;
+}
+
+/* GLITCH EFFECT */
+
+.stack {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  
+  .stack span {
+    color: var(--color-orange);
+    font-weight: bold;
+    grid-row-start: 1;
+    grid-column-start: 1;
+    font-size: 2rem;
+    padding: 10px;
+    --stack-height: calc(100% / var(--stacks) - 1px);
+    --inverse-index: calc(calc(var(--stacks) - 1) - var(--index));
+    --clip-top: calc(var(--stack-height) * var(--index));
+    --clip-bottom: calc(var(--stack-height) * var(--inverse-index));
+    clip-path: inset(var(--clip-top) 0 var(--clip-bottom) 0);
+    animation: stack 340ms cubic-bezier(.46,.29,0,1.24) 1 backwards calc(var(--index) * 120ms), glitch 1s ease infinite 1s alternate-reverse;
+  }
+  
+  .stack span:nth-child(odd) { --glitch-translate: 8px; }
+  .stack span:nth-child(even) { --glitch-translate: -8px; }
+  
+  @keyframes stack {
+    0% {
+      opacity: 0;
+      transform: translateX(-50%);
+      text-shadow: -2px 3px 0 red, 2px -3px 0 blue;
+    };
+    60% {
+      opacity: 0.5;
+      transform: translateX(50%);
+    }
+    80% {
+      transform: none;
+      opacity: 1;
+      text-shadow: 2px -3px 0 red, -2px 3px 0 blue;
+    }
+    100% {
+      text-shadow: none;
+    }
+  }
+  
+  @keyframes glitch {
+    0% {
+      text-shadow: -2px 3px 0 red, 2px -3px 0 blue;
+      transform: translate(var(--glitch-translate));
+    }
+    2% {
+      text-shadow: 2px -3px 0 red, -2px 3px 0 blue;
+    }
+    4%, 100% {  text-shadow: none; transform: none; }
+  }
+
+/* GLITCH EFFECT END */
+
+
+/* TYPING TEST EFFECT  */
+.welcome>p{
+    width: 25ch;
+    animation: typing 2.5s steps(23), blink .5s step-end infinite alternate;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 3px solid;
+    font-family: monospace;
+    font-size: 2em;
+    color: #fff;
+    padding: 10px;
+}
+
+@keyframes typing {
+    from {
+      width: 0
+    }
+  }
+      
+  @keyframes blink {
+    50% {
+      border-color: transparent
+    }
+  }
+
+/* TYPING TEST END */
+
+
+/* BUTTONS */
+.outline-danger{
+    background: none;
+    outline: none;
+    padding: 10px;
+    color: #fff;
+    margin-top: 30px;
+    border: 1px solid var(--color-danger);
+    cursor: pointer;
+    text-decoration: none;
+}
+/* BUTTONS END */
+
+/* ABOUT STARTS */
+
+.container{
+    padding: 100px 250px 0 250px;
+}
+
+.about{
+    display: flex;
+    width: 100vw;
+    height: auto;
+    justify-content: space-between;
+}
+.about-left{
+    padding-right: 20px;
+}
+
+.about-left>img{
+    border-radius: 50%;
+    border: 2px solid var(--color-orange);
+}
+
+.about-right{
+    padding-left: 20px;
+}
+
+.about-right>h2{
+    color: var(--color-orange);
+}
+
+.about-right>p{
+    padding: 20px 40px 20px 0;
+}
+
+/* ABOUT END */
+
+/* EXPERIENCE START */
+
+.experience>h2{
+    color: var(--color-orange);
+    text-align: center;
+    padding: 30px;
+}
+
+.experience{
+    display: flex;
+    flex-direction: column;
+}
+
+.main{
+    display: flex;
+    justify-content: space-around;
+}
+
+.left-experience .experiences:nth-child(odd){
+    visibility: hidden;
+}
+
+.right-experience .experiences:nth-child(even){
+    visibility: hidden;
+}
+
+.experiences{
+    padding: 10px;
+}
+
+.line{
+    border-left: 2px solid #ccc;
+
+}
+
+/* CONTACT START  */
+.contact{
+    padding: 30px 250px;
+    background-color: #575656;
+}
+.contact .head{
+    text-align: center;
+}
+
+.contact .head h2{
+    color: var(--color-danger);
+}
+
+.contact .head p{
+    color: #fff;
+}
+
+.form{
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.form input{
+    background-color: transparent;
+    border: none;
+    padding: 20px;
+    outline: none;
+}
+
+.form-left{
+    display: flex;
+    flex-direction: column;
+}
+
+
+textarea{
+    width: 300px;
+    height: 200px;
+    resize: none;
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+/* CONTACT END */
